@@ -1,15 +1,17 @@
-import { type Operator, type Predicate } from "../types";
+import { type Predicates } from "../types";
 
-export const Or: any = (left: Predicate, right: Predicate) => {
-	const operatorPredicate = (value: unknown) => left(value) || right(value);
+export const Or: any = (...predicates: Predicates) => {
+  const operatorPredicate = (value: unknown) =>
+    predicates.some((predicate) => predicate(value));
 
-	operatorPredicate.toObject = () => {
-		return {
-			type: "or",
-			predicates: [left.toObject(), right.toObject()],
-		};
-	};
+  operatorPredicate.toObject = () => {
+    return {
+      type: "or",
+      predicates: predicates.map((predicate) => predicate.toObject()),
+    };
+  };
 
-	return operatorPredicate;
+  return operatorPredicate;
 };
 Or.type = "operator";
+Or.ary = 2;
