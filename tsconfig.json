@@ -1,0 +1,10 @@
+{
+	"include": ["src/**/*"],
+	"exclude": ["src/__tests__"],
+	"compilerOptions": {
+		"moduleResolution": "node",
+		"sourceMap": true,
+		"strict": true,
+		"target": "ES2019"
+	}
+}
