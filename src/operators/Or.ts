@@ -1,17 +1,17 @@
 import { type Predicates } from "../types";
 
 export const Or: any = (...predicates: Predicates) => {
-  const operatorPredicate = (value: unknown) =>
-    predicates.some((predicate) => predicate(value));
+	const operatorPredicate = (value: unknown) =>
+		predicates.some((predicate) => predicate(value));
 
-  operatorPredicate.toObject = () => {
-    return {
-      type: "or",
-      predicates: predicates.map((predicate) => predicate.toObject()),
-    };
-  };
+	operatorPredicate.toObject = () => {
+		return {
+			type: "or",
+			predicates: predicates.map((predicate) => predicate.toObject()),
+		};
+	};
 
-  return operatorPredicate;
+	return operatorPredicate;
 };
 Or.type = "operator";
 Or.ary = 2;

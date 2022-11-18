@@ -6,23 +6,23 @@ import { type Predicates } from "../types";
  * @returns A single predicate containing all joined predicates and operators
  */
 export const combinePredicates = (...predicates: Predicates) => {
-  const operands: Predicates = [];
+	const operands: Predicates = [];
 
-  for (const predicate of predicates) {
-    if ("type" in predicate && predicate["type"] === "operator") {
-      operands.push(
-        predicate.apply(
-          null,
-          Array.from({ length: predicate.ary }, () => operands.pop()!) as any
-        )
-      );
-    } else {
-      operands.push(predicate);
-    }
-  }
+	for (const predicate of predicates) {
+		if ("type" in predicate && predicate["type"] === "operator") {
+			operands.push(
+				predicate.apply(
+					null,
+					Array.from({ length: predicate.ary }, () => operands.pop()!) as any
+				)
+			);
+		} else {
+			operands.push(predicate);
+		}
+	}
 
-  if (operands.length !== 1) {
-    throw new Error("Predicate could not be evaluated");
-  }
-  return operands.pop()!;
+	if (operands.length !== 1) {
+		throw new Error("Predicate could not be evaluated");
+	}
+	return operands.pop()!;
 };
