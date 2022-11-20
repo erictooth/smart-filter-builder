@@ -1,3 +1,10 @@
+## [0.3.1](https://github.com/erictooth/smart-filter-builder/compare/v0.3.0...v0.3.1) (2022-11-20)
+
+
+### Bug Fixes
+
+* trigger release ([91c477e](https://github.com/erictooth/smart-filter-builder/commit/91c477e0cfe6cd5226be63666c1e33832fc7dee7))
+
 # [0.3.0](https://github.com/erictooth/smart-filter-builder/compare/v0.2.1...v0.3.0) (2022-11-20)
 
 

@@ -1,6 +1,6 @@
 {
 	"name": "smart-filter-builder",
-	"version": "0.3.0",
+	"version": "0.3.1",
 	"description": "A flexible filter model and query builder",
 	"author": "erictooth",
 	"license": "Apache-2.0",
