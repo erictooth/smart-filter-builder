@@ -1,3 +1,10 @@
+## [0.3.2](https://github.com/erictooth/smart-filter-builder/compare/v0.3.1...v0.3.2) (2022-11-20)
+
+
+### Bug Fixes
+
+* add more built-in filter mappings for predicateToCEL ([229d4c1](https://github.com/erictooth/smart-filter-builder/commit/229d4c108f403f8bbc34dec79a4b628dd4b269f4))
+
 ## [0.3.1](https://github.com/erictooth/smart-filter-builder/compare/v0.3.0...v0.3.1) (2022-11-20)
 
 
