@@ -1,11 +1,11 @@
-import { ExactMatch, PartialMatch } from "../../filters";
+import { ExactMatch } from "../../filters";
 import { predicateToCEL } from "../predicateToCEL";
 import { combinePredicates } from "../combinePredicates";
 import { Field } from "../../sources";
 import { And, Or } from "../../operators";
 
 it("outputs a single predicate correctly", () => {
-	expect(predicateToCEL(Field("title", ExactMatch("test")))).toEqual(
+	expect(predicateToCEL()(Field("title", ExactMatch("test")))).toEqual(
 		'title == "test"'
 	);
 });
@@ -24,7 +24,7 @@ it("outputs combined predicates correctly", () => {
 		Or,
 		Or
 	);
-	expect(predicateToCEL(predicate)).toEqual(
+	expect(predicateToCEL()(predicate)).toEqual(
 		`browser.version == "50" && browser.name == "Firefox" || browser.version == "12" && browser.name == "Safari" || browser.version == "70" && browser.name == "Chrome"`
 	);
 });
@@ -47,7 +47,7 @@ it("adds minimal parentheses when required", () => {
 			Field("browser.version", ExactMatch(13))
 		)
 	);
-	expect(predicateToCEL(predicate)).toEqual(
+	expect(predicateToCEL()(predicate)).toEqual(
 		`(browser.name == "Chrome" || browser.name == "Edge") && browser.version == 79 || browser.name == "Firefox" && browser.version == 67 || browser.name == "Safari" && browser.version == 13`
 	);
 });
