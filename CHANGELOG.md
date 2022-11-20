@@ -1,3 +1,10 @@
+## [0.3.3](https://github.com/erictooth/smart-filter-builder/compare/v0.3.2...v0.3.3) (2022-11-20)
+
+
+### Bug Fixes
+
+* add `In` and `NotIn` filters ([87fa615](https://github.com/erictooth/smart-filter-builder/commit/87fa6159dc095797036d8f3cc68d4a7871a49a37))
+
 ## [0.3.2](https://github.com/erictooth/smart-filter-builder/compare/v0.3.1...v0.3.2) (2022-11-20)
 
 
