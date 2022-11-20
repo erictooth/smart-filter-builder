@@ -20,9 +20,9 @@ const defaultConjunctions: Conjunctions = {
 type Filters = Record<string, (predicateObj: any) => string>;
 
 const defaultFilters: Filters = {
-	ExactMatch: (predicateObj) =>
+	Is: (predicateObj) =>
 		`${predicateObj.source} == ${JSON.stringify(predicateObj.value)}`,
-	PartialMatch: (predicateObj) =>
+	Contains: (predicateObj) =>
 		`${predicateObj.source} LIKE ${JSON.stringify(predicateObj.value)}`,
 };
 
