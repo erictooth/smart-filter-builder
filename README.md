@@ -3,26 +3,29 @@
 ## Example
 
 ```typescript
-import { ExactMatch, LessThan } from "smart-filter-builder/filters";
+import { After, Is, LessThan } from "smart-filter-builder/filters";
 import { And, Or } from "smart-filter-builder/operators";
 import { Field } from "smart-filter-builder/sources";
 import { predicateToCEL } from "smart-filter-builder/utilities";
 
-const incompatibleBrowser = Or(
-  And(
-    Or(
-      Field("browser.name", ExactMatch("Chrome")),
-      Field("browser.name", ExactMatch("Edge"))
+const incompatibleBrowser = And(
+  Field("user.lastSeen", After(Temporal.Now.instant().subtract({ months: 1 }))),
+  Or(
+    And(
+      Or(
+        Field("browser.name", Is("Chrome")),
+        Field("browser.name", Is("Edge"))
+      ),
+      Field("browser.version", LessThan(79))
     ),
-    Field("browser.version", LessThan(79))
-  ),
-  And(
-    Field("browser.name", ExactMatch("Firefox")),
-    Field("browser.version", LessThan(67))
-  ),
-  And(
-    Field("browser.name", ExactMatch("Safari")),
-    Field("browser.version", LessThan(13))
+    And(
+      Field("browser.name", Is("Firefox")),
+      Field("browser.version", LessThan(67))
+    ),
+    And(
+      Field("browser.name", Is("Safari")),
+      Field("browser.version", LessThan(13))
+    )
   )
 );
 
