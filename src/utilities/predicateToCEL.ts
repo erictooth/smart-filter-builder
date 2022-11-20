@@ -49,10 +49,10 @@ export const predicateToCEL = (
 	return (predicate: any): string => {
 		const predicateObj = predicate.toObject();
 
-		const conjunctionToString = (predicateObj) => {
+		const conjunctionToString = (predicateObj: any) => {
 			const parentConjunction = conjunctions[predicateObj.type];
 			return predicateObj.predicates
-				.map((predicate) => {
+				.map((predicate: any) => {
 					const childConjunction = conjunctions[predicate.type];
 					return parenthesize(
 						childConjunction?.precedence,
