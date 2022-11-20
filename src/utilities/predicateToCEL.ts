@@ -1,3 +1,5 @@
+import { type Predicate, type FilterPredicate } from "../types";
+
 type Conjunctions = Record<
 	string,
 	{
@@ -17,13 +19,23 @@ const defaultConjunctions: Conjunctions = {
 	},
 };
 
-type Filters = Record<string, (predicateObj: any) => string>;
+type Filters = Record<string, (predicateObj: FilterPredicate) => string>;
 
 const defaultFilters: Filters = {
-	Is: (predicateObj) =>
-		`${predicateObj.source} == ${JSON.stringify(predicateObj.value)}`,
 	Contains: (predicateObj) =>
 		`${predicateObj.source} LIKE ${JSON.stringify(predicateObj.value)}`,
+	GreaterThan: (predicateObj) =>
+		`${predicateObj.source} > ${JSON.stringify(predicateObj.value)}`,
+	GreaterThanEqual: (predicateObj) =>
+		`${predicateObj.source} >= ${JSON.stringify(predicateObj.value)}`,
+	Is: (predicateObj) =>
+		`${predicateObj.source} == ${JSON.stringify(predicateObj.value)}`,
+	IsNot: (predicateObj) =>
+		`${predicateObj.source} != ${JSON.stringify(predicateObj.value)}`,
+	LessThan: (predicateObj) =>
+		`${predicateObj.source} < ${JSON.stringify(predicateObj.value)}`,
+	LessThanEqual: (predicateObj) =>
+		`${predicateObj.source} <= ${JSON.stringify(predicateObj.value)}`,
 };
 
 const parenthesize = (
@@ -46,7 +58,7 @@ export const predicateToCEL = (
 		...config.conjunctions,
 	};
 
-	return (predicate: any): string => {
+	return (predicate: Predicate): string => {
 		const predicateObj = predicate.toObject();
 
 		const conjunctionToString = (predicateObj: any) => {

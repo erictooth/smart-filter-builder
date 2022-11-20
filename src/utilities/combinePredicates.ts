@@ -1,4 +1,4 @@
-import { type Predicates } from "../types";
+import { type Predicate, type Predicates } from "../types";
 
 /**
  *
@@ -24,5 +24,5 @@ export const combinePredicates = (...predicates: Predicates) => {
 	if (operands.length !== 1) {
 		throw new Error("Predicate could not be evaluated");
 	}
-	return operands.pop()!;
+	return operands.pop()! as Predicate;
 };
