@@ -1,3 +1,10 @@
+# [0.3.0](https://github.com/erictooth/smart-filter-builder/compare/v0.2.1...v0.3.0) (2022-11-20)
+
+
+### Features
+
+* rename filters and add numeric comparisons ([01f64f7](https://github.com/erictooth/smart-filter-builder/commit/01f64f737d7a4746225cd0d946fe2c4e6664e1b5))
+
 ## [0.2.1](https://github.com/erictooth/smart-filter-builder/compare/v0.2.0...v0.2.1) (2022-11-18)
 
 
