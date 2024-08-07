@@ -1,4 +1,5 @@
-import { type Predicate, type FilterPredicate } from "../types";
+import { ComparatorModel } from "../interfaces/PredicateModel";
+import { type Predicate } from "../types";
 
 type Conjunctions = Record<
 	string,
@@ -19,7 +20,7 @@ const defaultConjunctions: Conjunctions = {
 	},
 };
 
-type Filters = Record<string, (predicateObj: FilterPredicate) => string>;
+type Filters = Record<string, (predicateObj: ComparatorModel) => string>;
 
 const defaultFilters: Filters = {
 	Contains: (predicateObj) =>

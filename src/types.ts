@@ -1,26 +1,15 @@
-export type FilterPredicate = {
-	filter: string;
-	source: string;
-	value: unknown;
-};
-
-export type OperatorPredicate = {
-	type: string;
-	predicates: PredicateObject[];
-};
-
-export type PredicateObject = FilterPredicate | OperatorPredicate;
+import { ComparatorModel, ConnectiveModel } from "./interfaces/PredicateModel";
 
 export type Predicate = {
 	(value: any): boolean;
-	toObject: (value?: any) => PredicateObject;
+	toObject: (value?: any) => ComparatorModel;
 };
 
 export type Operator = {
 	<T extends Predicate[]>(...args: T): Predicate;
 	ary: number;
 	type: "operator";
-	toObject: (value?: any) => PredicateObject;
+	toObject: (value?: any) => ConnectiveModel;
 };
 
 export type Predicates = (Predicate | Operator)[];
