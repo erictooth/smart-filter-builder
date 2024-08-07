@@ -5,10 +5,11 @@ export const createComparator =
 	(value: V) => {
 		const comparator = (source: S) => compare(value, source);
 		comparator.toObject = (source: S): ComparatorModel<V, S> => ({
-			name,
+			// name,
+			filter: name,
 			source,
 			value,
-			type: "comparator",
+			// type: "comparator",
 		});
 		return comparator;
 	};

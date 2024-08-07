@@ -1,12 +1,6 @@
-export const GreaterThanEqual = (value: number) => {
-	const filterPredicate = (source: number) => source >= value;
+import { createComparator } from "../utilities/createComparator";
 
-	filterPredicate.toObject = (source = "#VALUE") =>
-		({
-			filter: "GreaterThanEqual",
-			source,
-			value,
-		} as const);
-
-	return filterPredicate;
-};
+export const GreaterThanEqual = createComparator(
+	"GreaterThanEqual",
+	(value: number, source: number) => source >= value
+);

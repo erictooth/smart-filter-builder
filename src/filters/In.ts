@@ -1,12 +1,6 @@
-export const In = <T extends any[]>(value: T) => {
-	const filterPredicate = (source: any) => value.includes(source);
+import { createComparator } from "../utilities/createComparator";
 
-	filterPredicate.toObject = (source = "#VALUE") =>
-		({
-			filter: "In",
-			source,
-			value,
-		} as const);
-
-	return filterPredicate;
-};
+export const In = createComparator(
+	"In",
+	<T extends unknown[]>(value: T, source: T[number]) => value.includes(source)
+);

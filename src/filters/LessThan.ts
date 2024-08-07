@@ -1,12 +1,6 @@
-export const LessThan = (value: number) => {
-	const filterPredicate = (source: number) => source < value;
+import { createComparator } from "../utilities/createComparator";
 
-	filterPredicate.toObject = (source = "#VALUE") =>
-		({
-			filter: "LessThan",
-			source,
-			value,
-		} as const);
-
-	return filterPredicate;
-};
+export const LessThan = createComparator(
+	"LessThan",
+	(value: number, source: number) => source < value
+);

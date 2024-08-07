@@ -1,12 +1,6 @@
-export const NotIn = <T extends any[]>(value: T) => {
-	const filterPredicate = (source: any) => !value.includes(source);
+import { createComparator } from "../utilities/createComparator";
 
-	filterPredicate.toObject = (source = "#VALUE") =>
-		({
-			filter: "NotIn",
-			source,
-			value,
-		} as const);
-
-	return filterPredicate;
-};
+export const NotIn = createComparator(
+	"NotIn",
+	<T extends unknown[]>(value: T, source: T[number]) => !value.includes(source)
+);

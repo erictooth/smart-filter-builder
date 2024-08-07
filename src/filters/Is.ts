@@ -1,12 +1,6 @@
-export const Is = <T>(value: T) => {
-	const filterPredicate = (source: T) => value === source;
+import { createComparator } from "../utilities/createComparator";
 
-	filterPredicate.toObject = (source = "#VALUE") =>
-		({
-			filter: "Is",
-			source,
-			value,
-		} as const);
-
-	return filterPredicate;
-};
+export const Is = createComparator(
+	"Is",
+	<T>(value: T, source: T) => value === source
+);

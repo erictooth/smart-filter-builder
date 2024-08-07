@@ -1,25 +1,17 @@
+import { createComparator } from "../utilities/createComparator";
+
 type ContainsOptions = {
 	caseInsensitive?: boolean;
 };
 
-export const Contains = <Value extends string>(
-	value: Value,
+export const Contains = <T extends string>(
+	value: T,
 	options: ContainsOptions = {}
-) => {
-	const filterPredicate = <Source extends string>(source: Source) => {
+) =>
+	createComparator("Contains", (value: T, source: string) => {
 		if (options.caseInsensitive) {
 			return source.toLowerCase().indexOf(value.toLowerCase()) !== -1;
 		} else {
 			return source.indexOf(value) !== -1;
 		}
-	};
-
-	filterPredicate.toObject = (source = "#VALUE") =>
-		({
-			filter: "Contains",
-			source,
-			value,
-		} as const);
-
-	return filterPredicate;
-};
+	})(value);
