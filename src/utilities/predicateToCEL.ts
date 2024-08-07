@@ -76,11 +76,11 @@ export const predicateToCEL = (
 		};
 
 		const predicateToString = (predicateObj: any) => {
-			if ("type" in predicateObj) {
+			if ("type" in predicateObj && predicateObj.type !== "comparator") {
 				return conjunctionToString(predicateObj);
 			}
 
-			const filterToString = filters[predicateObj.filter];
+			const filterToString = filters[predicateObj.name];
 			if (!filterToString) {
 				throw new Error(`Unknown filter type ${JSON.stringify(predicateObj)}`);
 			}
