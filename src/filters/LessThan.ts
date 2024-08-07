@@ -3,7 +3,7 @@ export const LessThan = (value: number) => {
 
 	filterPredicate.toObject = (source = "#VALUE") =>
 		({
-			filter: "LessTHan",
+			filter: "LessThan",
 			source,
 			value,
 		} as const);
