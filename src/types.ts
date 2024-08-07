@@ -7,8 +7,8 @@ export type Predicate = {
 
 export type Operator = {
 	<T extends Predicate[]>(...args: T): Predicate;
-	ary: number;
-	type: "operator";
+	arity: number;
+	type: "connective";
 	toObject: (value?: any) => ConnectiveModel;
 };
 

@@ -13,5 +13,5 @@ export const Or: any = (...predicates: Predicates) => {
 
 	return operatorPredicate;
 };
-Or.type = "operator";
-Or.ary = 2;
+Or.type = "connective";
+Or.arity = 2;

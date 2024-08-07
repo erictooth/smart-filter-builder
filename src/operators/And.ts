@@ -13,5 +13,5 @@ export const And: any = (...predicates: Predicates) => {
 
 	return operatorPredicate;
 };
-And.type = "operator";
-And.ary = 2;
+And.type = "connective";
+And.arity = 2;

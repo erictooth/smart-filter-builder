@@ -9,11 +9,11 @@ export const combinePredicates = (...predicates: Predicates) => {
 	const operands: Predicates = [];
 
 	for (const predicate of predicates) {
-		if ("type" in predicate && predicate["type"] === "operator") {
+		if ("type" in predicate && predicate["type"] === "connective") {
 			operands.push(
 				predicate.apply(
 					null,
-					Array.from({ length: predicate.ary }, () => operands.pop()!) as any
+					Array.from({ length: predicate.arity }, () => operands.pop()!) as any
 				)
 			);
 		} else {
